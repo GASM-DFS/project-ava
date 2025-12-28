@@ -1,0 +1,47 @@
+type Player @table {
+  playerId: String!
+  displayName: String!
+  team: String
+  position: String
+  status: String
+}
+
+type PerformanceMetric @table {
+  metricName: String!
+  value: Float!
+  timestamp: Timestamp!
+  unit: String
+  player: Player
+}
+
+type Projection @table {
+  baseProj: Float!
+  baselineEfficiency: Float!
+  simCeiling: Float!
+  timestamp: Timestamp!
+  coachingProfile: CoachingProfile
+  player: Player
+}
+
+type InjuryReport @table {
+  injuryId: String!
+  reportDate: Date!
+  description: String!
+  status: String!
+  expectedReturnDate: Date
+  player: Player
+}
+
+type CoachingProfile @table {
+  profileId: String!
+  name: String!
+  description: String!
+  strategyImpact: String
+}
+
+type AuthorityNodeSession @table {
+  sessionId: String!
+  lastAccessed: Timestamp!
+  deviceType: String
+  browserInfo: String
+}
